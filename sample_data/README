@@ -1,0 +1,2 @@
+lncap.simulated.fa: raw sequencing fasta file
+lncap.simulated.fa.contig.final.fa: ChIPdenovo assembled contigs from lncap.simulated.fa
