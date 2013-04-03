@@ -1,4 +1,4 @@
-# usage: program contig.fa peak.bed
+# usage: program contig.fa peak.bed ref_path
 import sys, os
 from Bio import SeqIO
 
