@@ -306,7 +306,7 @@ if __name__ == "__main__":
 
 	# smoothing read coverage for each generated contig using ksmooth in R
 	fullpath = os.path.realpath(__file__)
-	filename = sys.argv[0]
+	filename = sys.argv[0].split('/')[-1]
 	path = fullpath.split(filename)[0]
 	
 	os.system('Rscript '+path+'smooth.r '+input+'.contig.merged.fa.coverage_p.fa '+input+'.contig.merged.fa.coverage_m.fa')
