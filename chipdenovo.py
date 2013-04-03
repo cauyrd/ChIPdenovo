@@ -123,11 +123,11 @@ def usage():
 	print 'Usage:'
 	print '	python chipdenovo.py -i <filename.fasta> [opts]'
 	print 'Opts:'
-	print '	-K <int>	:kmer length (default:25, max=32)'
+	print ' -K <int>	:kmer length (default:25, max=32)'
 	print ' -L <int>	:min contig length to be reported (default:100)'
-	print ' -r <int>	:min read coverage for contigs to be reported'
-	print ' -l <int>	:min merge suffix/prefix length'
-	print '	-h			:produce this menu'
+	print ' -r <int>	:min read coverage for contigs to be reported (default:2)'
+	print ' -l <int>	:min merge suffix/prefix length (default:20)'
+	print ' -h		:produce this menu'
 
 if __name__ == "__main__":
 	# parameters parsing.
