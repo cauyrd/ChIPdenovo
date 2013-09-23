@@ -163,8 +163,10 @@ if __name__ == "__main__":
 		sys.exit(2)
 
 	#### STEP1: run inchworm for assembling the the raw reads
-
-	os.system('inchworm --reads '+input+' --run_inchworm -K '+str(kmer)+' -L '+min_len+' --DS >'+input+'.contig')
+	fullpath = os.path.realpath(__file__)
+	filename = sys.argv[0].split('/')[-1]
+	path = fullpath.split(filename)[0]
+	os.system(path+'scripts/inchworm --reads '+input+' --run_inchworm -K '+str(kmer)+' -L '+min_len+' --DS >'+input+'.contig')
 	
 	# rename contig fasta
 	rename_fasta(input+'.contig')
@@ -305,11 +307,7 @@ if __name__ == "__main__":
 	#### STEP4: spliting possible worongly merged contigs based on the shape of read coverage curve	
 
 	# smoothing read coverage for each generated contig using ksmooth in R
-	fullpath = os.path.realpath(__file__)
-	filename = sys.argv[0].split('/')[-1]
-	path = fullpath.split(filename)[0]
-	
-	os.system('Rscript '+path+'smooth.r '+input+'.contig.merged.fa.coverage_p.fa '+input+'.contig.merged.fa.coverage_m.fa')
+	os.system('Rscript '+path+'scripts/smooth.r '+input+'.contig.merged.fa.coverage_p.fa '+input+'.contig.merged.fa.coverage_m.fa')
 	
 	# spliting merged contigs with double peak mode for each strand coverage curve
 	in0 = iter(HTSeq.FastaReader(input+'.contig.merged.fa.coverage.fa'))

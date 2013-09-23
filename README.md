@@ -43,9 +43,9 @@ Output
 
 Downstream analysis
 -------------------
-mapping assembled contigs and classifying contigs based on their overlap with peak regions. 
+1. Mapping assembled contigs and classifying contigs based on their overlap with peak regions. 
 
-    python classify_contig.py contig.fa peak.bed ref_path
+    python scripts/classify_contig.py contig.fa peak.bed ref_path
     
 * contig.fa is the assembled contigs output from ChIPdenovo
 * peak.bed is the peaks identified by a peak calling tool in bed format.
@@ -58,6 +58,10 @@ mapping assembled contigs and classifying contigs based on their overlap with pe
 * *.reliable_new.fa/.bed - the contigs reliably mapped to reference genome and excluded from identified peaks
 * *.reliable_peak.fa/.bed - the contigs reliably mapped to reference genome and included in identified peaks
 * *.mapped_new.bed/.bed - all the mapped novel peak regions identify by ChIPdenovo, the combined result form *repeat.bed and *reliable_new.bed
+
+2. Calculate N50 for assembled contigs
+
+    python scripts/n50.py contig.fa
 
 Contact us
 ----------
