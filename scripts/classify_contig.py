@@ -3,13 +3,14 @@ import sys, os
 from Bio import SeqIO
 
 if len(sys.argv) < 4:
-	ref_loc = '/compbio/data/bwaIndex/hg19.fa'
+	ref_loc = '/compbio/data/bwaIndex/ryang/hg19'
 else:
 	ref_loc = sys.argv[3]
 mapq_cutoff = 1 
 
 # mapping contigs to reference genome
-os.system('bwa bwasw -b 33 -r 17 -q 50 -w 500 -z 100 -t 6 '+ref_loc+' '+sys.argv[1]+' >tmp.sam')
+#os.system('bwa bwasw -b 33 -r 17 -q 50 -w 500 -z 100 -t 6 '+ref_loc+' '+sys.argv[1]+' >tmp.sam')
+os.system('bwa bwasw -t 6 '+ref_loc+' '+sys.argv[1]+' >tmp.sam')
 os.system('samtools view -bS tmp.sam >tmp.bam')
 os.system('samtools sort tmp.bam tmp.sorted')
 os.system('samtools index tmp.sorted.bam')

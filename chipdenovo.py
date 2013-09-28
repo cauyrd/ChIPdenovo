@@ -5,6 +5,7 @@ from Bio import SeqIO
 import itertools
 from scipy.stats import scoreatpercentile
 import shutil, glob
+from time import time, strftime
 
 def _boolrelextrema(data, comparator,
                   axis=0, order=1, mode='clip'):
@@ -162,6 +163,10 @@ if __name__ == "__main__":
 		usage()
 		sys.exit(2)
 
+	# timing progrom start
+	start = time()
+	print 'ChIPdenovo starts running: '+strftime("%Y-%m-%d %H:%M:%S")
+
 	#### STEP1: run inchworm for assembling the the raw reads
 	fullpath = os.path.realpath(__file__)
 	filename = sys.argv[0].split('/')[-1]
@@ -174,6 +179,9 @@ if __name__ == "__main__":
 	for read in SeqIO.parse(input+'.contig.rename.fa','fasta'):
 		contig_dict[read.id] = read.seq
 	print str(len(contig_dict))+' contigs assembled after inchworm step.'
+
+	# timing inchworm finished
+	print 'Inchworm done: '+strftime("%Y-%m-%d %H:%M:%S")
 
 	#### STEP2: merging contigs with common overlapped >= min_merge_l substring
 
@@ -338,10 +346,15 @@ if __name__ == "__main__":
 	ofp.close()
 	print str(len(contig_dict))+' contigs left after splitting step.'
 	print 'contigs assembly is done!'
-	os.mkdir('output')
+	folder = 'chipdenovo_intermediate_files'
+	if os.path.exists(folder):
+		shutil.rmtree(folder)
+	os.mkdir(folder)
 	interfile = glob.glob('*.contig')
 	interfile.extend(glob.glob('*.merged.fa*'))
 	interfile.extend(glob.glob('*.rename.fa*'))
 	for each in interfile:
-		shutil.move(each,'output')
-	print 'chipdenovo running is finished'
+		shutil.move(each, folder)
+	print 'ChIPdenovo finishes running: '+strftime("%Y-%m-%d %H:%M:%S")
+	end = time()
+	print 'Programing runing: '+str(end-start)+' seconds.'
