@@ -53,7 +53,7 @@ Downstream analysis
 
 * *.unmapped.fa - the contigs can not be aligned to reference genome
 * *.unique.fa/.bed - the contigs uniquely mapped to reference genome
-* *.mapped.bed/.bed - assembled contigs can be mapped to reference with identify >= 0.9 (default)
+* *.mapped.fa/.bed - assembled contigs can be mapped to reference with identify >= 0.9 (default)
 
 ####2. Calculate N50 for assembled contigs
 
