@@ -58,15 +58,3 @@ Downstream analysis
 ####2. Calculate N50 for assembled contigs
 
     python scripts/n50.py contig.fa
-
-Contact us
-----------
-Questions, suggestions, comments, etc?
-
-Author: Rendong Yang
-
-Send email to cauyrd@gmail.com
-
-Referencing ChIPdenovo
-----------------------
-updating soon!
