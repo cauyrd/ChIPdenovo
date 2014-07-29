@@ -12,12 +12,13 @@ A. Programming environment and NGS tools
 * SAMtools (http://samtools.sourceforge.net/)
 * BEDtools (http://code.google.com/p/bedtools/)
 
-B. Python packages:
+B. Python and R packages:
 
 * HTSeq (http://www-huber.embl.de/users/anders/HTSeq/doc/overview.html)
 * Biopython (http://biopython.org/wiki/Main_Page)
 * SciPy (http://www.scipy.org/)
 * Numpy (http://www.numpy.org/)
+* seqinr (http://seqinr.r-forge.r-project.org/)
 
 Running ChIPdenovo
 ------------------
